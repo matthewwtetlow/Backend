@@ -22,8 +22,8 @@ namespace Backend.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            IEnumerable<Transaction> employees = _dataRepository.GetAll();
-            return Ok(employees);
+            IEnumerable<Transaction> transactions = _dataRepository.GetAll();
+            return Ok(transactions);
         }
         // GET: api/Transaction/5
         [HttpGet("{id}", Name = "Get")]
@@ -32,7 +32,7 @@ namespace Backend.Controllers
             Transaction transaction = _dataRepository.Get(id);
             if (transaction == null)
             {
-                return NotFound("The Employee record couldn't be found.");
+                return NotFound("The Transaction record couldn't be found.");
             }
             return Ok(transaction);
         }
@@ -42,7 +42,7 @@ namespace Backend.Controllers
         {
             if (transaction == null)
             {
-                return BadRequest("Employee is null.");
+                return BadRequest("Transaction is null.");
             }
             _dataRepository.Add(transaction);
             return CreatedAtRoute(
